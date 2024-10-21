@@ -3,20 +3,17 @@ import torch
 import io
 import streamlit as st
 from function import generateImage
+from models import models
 
 def main():
 
   device = "cuda" if torch.cuda.is_available() else "cpu"
   
-  # セッションステートの初期化
-  if "prompt" not in st.session_state:
-    st.session_state.prompt = ""
-  if "negative_prompt" not in st.session_state:
-    st.session_state.negative_prompt = ""
-  if "style" not in st.session_state:
-    st.session_state.style = "なし"
-  if "generated_image" not in st.session_state:
-    st.session_state.generated_image = None
+  # セッションの初期化
+  st.session_state.prompt = ""
+  st.session_state.negative_prompt = ""
+  st.session_state.style = next(iter(models))
+  st.session_state.generated_image = None
 
   # タイトル
   st.title("画像生成AIの体験")
@@ -41,8 +38,8 @@ def main():
   # 画風を設定
   style = st.selectbox(
       "特化させたい画風があれば以下の欄から選択してください, 特になければ「なし」の欄を選んでください",
-      ("なし", "アニメ", "油絵", "写真", "ファンタジー", "スチームパンク"),
-      index=["なし", "アニメ", "油絵", "写真", "ファンタジー", "スチームパンク"].index(st.session_state.style)
+      (style for style, model in models.items()),
+      index=[style for style, model in models.items()].index(st.session_state.style)
   )
 
   st.write(f"選択中の画風: {style}")

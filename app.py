@@ -7,7 +7,16 @@ from function import generateImage
 def main():
 
   device = "cuda" if torch.cuda.is_available() else "cpu"
-  negative_prompt = ""
+  
+  # セッションステートの初期化
+  if "prompt" not in st.session_state:
+    st.session_state.prompt = ""
+  if "negative_prompt" not in st.session_state:
+    st.session_state.negative_prompt = ""
+  if "style" not in st.session_state:
+    st.session_state.style = "なし"
+  if "generated_image" not in st.session_state:
+    st.session_state.generated_image = None
 
   # タイトル
   st.title("画像生成AIの体験")
@@ -20,10 +29,8 @@ def main():
   """)
 
   # プロンプトの入力欄
-  prompt = st.text_input("プロンプトの入力", "")
-  with st.empty():
-    if st.button("ネガティブプロンプトの追加"):
-      negative_prompt = st.text_input("ネガティブプロンプトの入力", "")
+  prompt = st.text_input("プロンプトの入力", st.session_state.prompt)
+  negative_prompt = st.text_input("ネガティブプロンプトの入力", st.session_state.negative_prompt)
 
   st.write("""
   ※プロンプトは以下のように英語で、単語のように入力することをお勧めします。\n
@@ -34,17 +41,22 @@ def main():
   # 画風を設定
   style = st.selectbox(
       "特化させたい画風があれば以下の欄から選択してください, 特になければ「なし」の欄を選んでください",
-      ("なし", "アニメ", "油絵", "写真", "ファンタジー", "スチームパンク")
+      ("なし", "アニメ", "油絵", "写真", "ファンタジー", "スチームパンク"),
+      index=["なし", "アニメ", "油絵", "写真", "ファンタジー", "スチームパンク"].index(st.session_state.style)
   )
 
   st.write(f"選択中の画風: {style}")
 
   # 画像生成の実行
-  with st.empty():
-    if st.button("実行"):
-      image = generateImage(prompt, negative_prompt, style, device)
-      st.image(image, "generated image")
+  if st.button("実行"):
+    st.session_state.prompt = prompt
+    st.session_state.negative_prompt = negative_prompt
+    st.session_state.style = style
+    st.session_state.generated_image = generateImage(prompt, negative_prompt, style, device)
 
+  # 生成された画像の表示
+  if st.session_state.generated_image is not None:
+    st.image(st.session_state.generated_image, "generated image")
 
 
 if __name__ == "__main__":

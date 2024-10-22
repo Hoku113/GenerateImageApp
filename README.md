@@ -11,11 +11,12 @@
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
+
 2. `ドライブにコピー`を押下し、上から順番に実行しアプリを起動
 
 ![copy_drive](./asset/copy_drive.png)
 
-※Google Colabnのランタイムを必ずGPUにすること
+※Google Colabのランタイムを必ずGPUにすること
 
 3. `External URL`のIPアドレスをコピーする
 

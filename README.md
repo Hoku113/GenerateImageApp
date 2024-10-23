@@ -28,3 +28,10 @@
 
 ![access](./asset/access.png)
 
+
+## 使用しているAIモデルについて
+このプロジェクトには、以下のAIモデルが含まれます。各モデルの利用は、指定されたライセンスに準拠します：
+- **Anime Kawai Diffusion by Ojimi**: CreativeML OpenRAIL-M [詳細](https://huggingface.co/Ojimi/anime-kawai-diffusion)
+- **Stable Diffusion 2 Base by StabilityAI**: CreativeML OpenRAIL-M [詳細](https://huggingface.co/stabilityai/stable-diffusion-2-base)
+- **B-LoRA Village Oil by LoRA Library**: OpenRAIL++ [詳細](https://huggingface.co/lora-library/B-LoRA-village_oil)
+

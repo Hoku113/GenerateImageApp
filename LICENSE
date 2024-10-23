@@ -19,13 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-Additional Terms for AI Models:
-This project includes AI models that are subject to separate licenses:
-1. **Anime Kawai Diffusion by Ojimi** - Licensed under CreativeML OpenRAIL-M. See [model page](https://huggingface.co/Ojimi/anime-kawai-diffusion).
-2. **Stable Diffusion 2 Base by StabilityAI** - Licensed under CreativeML OpenRAIL-M. See [model page](https://huggingface.co/stabilityai/stable-diffusion-2-base).
-3. **B-LoRA Village Oil by LoRA Library** - Licensed under OpenRAIL++. See [model page](https://huggingface.co/lora-library/B-LoRA-village_oil).
-
-Users of this software must comply with the terms of the respective AI model licenses.
